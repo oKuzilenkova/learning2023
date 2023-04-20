@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+    <preConditions>
+        <runningAs username="admin"/>
+    </preConditions>
+
+    <changeSet author="okuzilenkova" id="1">
+        <sql>
+            CREATE SCHEMA IF NOT EXISTS lab_lb;
+        </sql>
+    </changeSet>
+
+    <changeSet id="2" author="okuzilenkova">
+        <createTable remarks="Курс валюты" tableName="exchange_rates" schemaName="lab_lb">
+            <column remarks="Идентификатор" name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column remarks="Код валюты" name="currency_code" type="varchar"/>
+            <column remarks="Наименование валюты" name="currency_name" type="varchar"/>
+            <column remarks="Номинал" name="nominal" type="bigint"/>
+            <column remarks="Стоимость" name="cost" type="decimal"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="okuzilenkova">
+        <sql>
+            insert into lab_lb.exchange_rates (currency_code, currency_name, nominal, cost)
+            values ('AUD', 'Австралийский доллар', 1, 76.9174),
+                   ('AZN', 'Азербайджанский манат', 1, 60.8337),
+                   ('AMD', 'Армянских драмов', 100, 21.0442),
+                   ('BYN', 'Белорусский рубль', 1, 31.6632),
+                   ('BGN', 'Болгарский лев', 1, 57.9138),
+                   ('BRL', 'Бразильский реал', 1, 21.0204),
+                   ('HUF', 'Венгерских форинтов', 100, 30.4308),
+                   ('KRW', 'Вон Республики Корея', 1000, 84.9838),
+                   ('HKD', 'Гонконгский доллар', 1, 13.1855),
+                   ('DKK', 'Датская крона', 1, 15.2255),
+                   ('USD', 'Доллар США', 1, 103.1618),
+                   ('EUR', 'Евро', 1, 113.2613),
+                   ('INR', 'Индийских рупий', 10, 13.5199),
+                   ('KZT', 'Казахстанских тенге', 100, 20.3014),
+                   ('CAD', 'Канадский доллар', 1, 81.933),
+                   ('KGS', 'Киргизских сомов', 10, 10.1916),
+                   ('CNY', 'Китайский юань', 1, 16.1891),
+                   ('MDL', 'Молдавских леев', 10, 56.0814),
+                   ('TMT', 'Новый туркменский манат', 1, 29.4748),
+                   ('NOK', 'Норвежская крона', 1, 11.7561),
+                   ('PLN', 'Польский злотый', 1, 24.0515),
+                   ('RON', 'Румынский лей', 1, 22.8913),
+                   ('XDR', 'СДР (специальные права заимствования)', 1, 142.2137),
+                   ('SGD', 'Сингапурский доллар', 1, 75.9604),
+                   ('TJS', 'Таджикских сомони', 10, 85.233),
+                   ('TRY', 'Турецких лир', 10, 69.4912),
+                   ('UZS', 'Узбекских сумов', 10000, 89.4243),
+                   ('UAH', 'Украинских гривен', 10, 34.857),
+                   ('GBP', 'Фунт стерлингов Соединенного королевства', 1, 136.0395),
+                   ('CZK', 'Чешских крон', 10, 45.9969),
+                   ('SEK', 'Шведская крона', 1, 10.8917),
+                   ('CHF', 'Швейцарский франк', 1, 110.3335),
+                   ('ZAR', 'Южноафриканских рэндов', 10, 69.7002),
+                   ('JPY', 'Японских иен', 100, 85.4731);
+
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>
